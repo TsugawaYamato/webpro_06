@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>MONSTER HUNTER歴代メインモンスター</title>
+</head>
+<body>
+   <h2>メインモンスター一覧</h2>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>作品名</th>
+            <th>モンスター名</th>
+        </tr>
+
+        <% for(let row of data) {%>
+        <tr>
+        <td><%= row.id %></td>
+        <td><%= row.code %></td>
+        <td><%= row.name %></td>
+      </tr>
+    <% } %>
+    </table>
+</body>
+</html>

@@ -90,3 +90,46 @@ app.get("/keiyo_add", (req, res) => {
   
   res.render("db2", { data: station });
 });
+
+app.use("/public", express.static(__dirname + "/public"));
+let mh = [
+  { id: 1, code: "MH", name: "リオレウス" },
+  { id: 2, code: "MHG", name: "リオレウス亜種" },
+  { id: 3, code: "MHP", name: "リオレウス" },
+  { id: 4, code: "MH2", name: "クシャルダオラ" },
+  { id: 5, code: "MHP2nd", name: "ティガレックス" },
+  { id: 6, code: "MHP2ndG", name: "ナルがクルガ" },
+  { id: 7, code: "MH3rd", name: "ラギアクルス" },
+  { id: 8, code: "MHP3", name: "ジンオウガ" },
+  { id: 9, code: "MH3G", name: "ブラキディオス" },
+  { id: 10, code: "MH4", name: "ゴア・マガラ" },
+  { id: 11, code: "MH4G", name: "セルレギオス" },
+  { id: 12, code: "MHX", name: "ディノバルド" },
+  { id: 13, code: "MHXX", name: "バルファルク" },
+  { id: 14, code: "MHWORLD", name: "ネルギガンテ" },
+  { id: 15, code: "MHW:ICEBORNE", name: "イヴェルカーナ" },
+  { id: 16, code: "MRISE", name: "マガイマガド" },
+  { id: 17, code: "MHR:SUNBRAKE", name: "メル・ゼナ" },
+  { id: 18, code: "MHWILDS", name: "アルシュベルド" }
+];
+
+app.get("/MHmain", (req, res) => {
+  res.render("MH", { data: mh });
+});
+
+app.get("/MHmain_add", (req, res) => {
+  let id = req.query.id;
+  let code = req.query.code;
+  let name = req.query.name;
+
+  let newdata = { id: id, code: code, name: name };
+  mh.push(newdata);
+
+  
+  res.render("MH", { data: mh });
+
+});
+
+app.get("/MHmain_form", (req, res) => {
+  res.sendFile(__dirname + "/public/MHmain_add.html");
+});
